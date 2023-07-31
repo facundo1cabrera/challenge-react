@@ -5,12 +5,12 @@ content-type: application/json
     "name": "John",
     "lastName": "Smith",
     "email": "facucabrera@gmail.com",
-    "phone": "111111"
+    "phone": "11111111"
 }
 
 ###
 
-GET http://localhost:3000/api/product?limit=2&type=accesorie HTTP/1.1
+GET http://localhost:3000/api/product?page=1&_id=64c6c98363673f2029cc26bc HTTP/1.1
 
 ###
 
@@ -18,8 +18,22 @@ POST http://localhost:3000/api/product HTTP/1.1
 content-type: application/json
 
 {
-    "title": "Moto",
-    "description": "Lorem ipsum isp si is alsa porem lap laos li ma rel la l",
-    "price": 11121.2121,
-    "type": "bike"
+    "title": "Heritage classic",
+    "description": " Lorem ipsum isp si is alsa porem lap laos li ma rel la l Lorem ipsum isp si is alsa porem lap laos li ma rel la l Lorem ipsum isp si is alsa porem lap laos li ma rel la l Lorem ipsum isp si is alsa porem lap laos li ma rel la l Lorem ipsum isp si is alsa porem lap laos li ma rel la l Lorem ipsum isp si is alsa porem lap laos li ma rel la l Lorem ipsum isp si is alsa porem lap laos li ma rel la l Lorem ipsum isp si is alsa porem lap laos li ma rel la l Lorem ipsum isp si is alsa porem lap laos li ma rel la l",
+    "price": 10021,
+    "type": "bike",
+    "imageUrl": "/detail1.png"
+}
+
+###
+
+POST http://localhost:3000/api/product HTTP/1.1
+content-type: application/json
+
+{
+    "title": "N Series Rear Bracket",
+    "description": "Lorem ipsum isp Lorem ipsum isp Lorem ipsum isp Lorem ipsum isp Lorem ipsum isp Lorem ipsum isp Lorem ipsum isp Lorem ipsum isp Lorem ipsum isp Lorem ipsum isp Lorem ipsum isp Lorem ipsum isp",
+    "price": 180,
+    "type": "accessorie",
+    "imageUrl": "/accessorie.png"
 }

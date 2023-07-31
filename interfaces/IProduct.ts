@@ -4,6 +4,7 @@ export interface IProduct {
     description: string;
     price: number;
     type: IType;
+    imageUrl: string;
 }
 
 export type IType = 'bike'|'accesorie'|'apparel';

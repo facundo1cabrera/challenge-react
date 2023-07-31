@@ -12,20 +12,22 @@ const Header: React.FC = () => {
     return (
         <header className="w-full py-4">
         <div className="flex justify-between max-w-6xl m-auto items-center">
-          <img 
-            className="object-contain"
-            src="/logo.png"
-          />
+          <Link href="/">
+            <img 
+              className="object-contain"
+              src="/logo.png"
+            />
+          </Link>
           <div className="">
             <ul className="hidden sm:flex gap-6">
               <li className="text-lg font-medium hover:text-purple-600"
               >
-                <Link href="/?type=bikes">
+                <Link href="/?type=bike">
                   Bikes
                 </Link>
               </li>
               <li className="text-lg font-medium hover:text-purple-600">
-                <Link href="/?type=accessories">
+                <Link href="/?type=accessorie">
                   Accessories
                 </Link>
               </li>

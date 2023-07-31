@@ -40,29 +40,33 @@ const postProducts = async (req: NextApiRequest, res: NextApiResponse) => {
 const getProducts = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
         await db.connect();
-        // We destructure the req.query object to get the page and limit variables from url 
-        const { page = 1, limit = 10, type } = req.query;
+        const { page = 1, limit = 10, type, _id } = req.query;
 
-        const condition: { type?: string } = {};
+        const condition: { type?: string, _id?: string } = {};
 
-        if (type === 'bike' || type === 'accesorie' || type === 'apparel') {
+        if (type === 'bike' || type === 'accessorie' || type === 'apparel') {
             condition['type'] = type;
         }
 
+        if (_id != null || _id != undefined) {
+            condition['_id'] = _id as string;
+        }
+
         const parsedLimit = parseInt(limit as string, 10);
+        const parsedPage = parseInt(page as string, 10) - 1;
 
         const products = await ProductModel.find(condition)
             .limit(parsedLimit)
-            .skip((parseInt(page as string, 10) - 1) * parsedLimit)
+            .skip(parsedPage * parsedLimit)
 
-        // Getting the numbers of products stored in database
-        const count = await ProductModel.countDocuments();
+        const count = await ProductModel.countDocuments(condition);
         await db.disconnect();
 
         return res.status(200).json({
             products,
             totalPages: Math.ceil(count / parsedLimit),
-            currentPage: page,
+            currentPage: parsedPage,
+            totalItems: count
         });
     } catch (err) {
         console.log("Error")

@@ -1,11 +1,25 @@
-services:
-  db:
+services: 
+  app:
+    build:
+      context: .
+      target: dev
+      dockerfile: Dockerfile
+    # command: yarn start:dev
+    volumes:
+      - .:/app/
+      - /app/node_modules
+    depends_on:
+      - db
+    container_name: simpli-app
+    ports:
+      - ${PORT}:${PORT}
+    environment:
+      MONGO_URL: ${MONGO_URL}
+
+  db: 
     image: mongo:5.0.0
     container_name: db
     ports:
       - 27017:27017
     volumes:
       - ./mongo:/data/db
-  
-
-#mongodb://localhost:27017/db

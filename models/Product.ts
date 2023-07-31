@@ -9,10 +9,11 @@ const productSchema = new Schema({
     type: { 
         type: String,
         enum: {
-            values: ['bike', 'accesorie', 'apparel']
+            values: ['bike', 'accessorie', 'apparel']
         },
         required: true
-    }
+    },
+    imageUrl: { type: String, required: true}
 });
 
 const ProductModel: Model<IProduct> = mongoose.models.Product || mongoose.model('Product', productSchema);
