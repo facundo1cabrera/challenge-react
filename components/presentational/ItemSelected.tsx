@@ -1,6 +1,5 @@
 import axios, { Axios } from 'axios';
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
 import ItemPreselected from './ItemPreselected';
 import LeadForm from './LeadForm';
 import LeadObtained from './LeadObtained';
@@ -13,14 +12,12 @@ const ItemSelected = ({id}: {id: string}) => {
         setState('leadForm');
     }
 
-    function handleGetItemQuotation(event: React.FormEvent<HTMLFormElement>) {
-
-        console.log(event.target);
+    function handleSubmitLeadForm(event: any) {
         axios.post("http://localhost:3000/api/lead", {
-            name: "Facundo",
-            lastName: "Smith",
-            email: "facucabrera@gmail.com",
-            phone: "111111"
+            name: event.target.name.value,
+            lastName: event.target.surname.value,
+            email: event.target.email.value,
+            phone: event.target.phone.value
         })
 
         event.preventDefault();
@@ -57,9 +54,10 @@ const ItemSelected = ({id}: {id: string}) => {
                 state === 'leadForm'
                 &&
                 <LeadForm 
-                    handleSumbit={handleGetItemQuotation} 
+                    handleSumbit={handleSubmitLeadForm} 
                     price={item.price} 
                     title={item.title}
+                    imageUrl={item.imageUrl}
                 />
             }
             {

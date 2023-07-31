@@ -1,10 +1,10 @@
-const LeadForm = ({handleSumbit, price, title}: 
-    {handleSumbit: React.FormEventHandler<HTMLFormElement>, price: number, title: string}) => {
+const LeadForm = ({handleSumbit, price, title, imageUrl}: 
+    {handleSumbit: React.FormEventHandler<HTMLFormElement>, price: number, title: string, imageUrl: string}) => {
     return (
         <div className="mt-36 max-w-6xl m-auto">
             <div className="flex flex-col sm:flex-row w-full h-full">
                 <div className="w-full flex justify-center items-center">
-                    <img className="object-cover" src="/detail1.png" />
+                    <img className="object-cover w-full" src={imageUrl} />
                 </div>
                 <div className="w-full flex flex-col">
                     <h1 className="text-4xl font-medium mb-2">Detail Quotation</h1>
@@ -18,22 +18,22 @@ const LeadForm = ({handleSumbit, price, title}:
                         <div className='w-full text-left flex mb-8'> 
                             <div className='flex flex-col w-1/2 mr-2'>
                                 <label htmlFor="name">Name</label>
-                                <input className='h-10 border-2 rounded-md' id='name' type="text" />
+                                <input name="name" className='h-10 border-2 rounded-md' id='name' type="text" />
                             </div>
                             <div className='flex flex-col w-1/2 ml-2'>
                                 <label htmlFor="surname">Lastname</label>
-                                <input className='h-10 border-2 rounded-md' id='surname' type="text" />
+                                <input name="surname" className='h-10 border-2 rounded-md' id='surname' type="text" />
                             </div>
                         </div>
                         <div className='flex flex-col mb-8'>
                             <label htmlFor="email">Email</label>
-                            <input className='h-10 border-2 rounded-md' id='email' type="text" />
+                            <input name="email" className='h-10 border-2 rounded-md' id='email' type="email" />
                         </div>
                         <div className='flex flex-col mb-8'>
                             <label htmlFor="phoneNumber">Phone</label>
-                            <input className='h-10 border-2 rounded-md' id='phoneNumber' type="text" />
+                            <input name="phone" className='h-10 border-2 rounded-md' id='phoneNumber' type="text" />
                         </div>
-                        <div className='flex jus'>
+                        <div className='flex'>
                             <div className='mr-3'>
                                 <input className='mr-2' type="checkbox"/>
                                 <label className='ml-2'>I'm interested in finance</label>
